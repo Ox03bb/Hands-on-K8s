@@ -12,8 +12,11 @@ i will try it with a simple architecture, and i will add more complex configurat
 
 
 ## Example:
-in this exaple i will run deployment of a simple Nginx web server with a replica set of 3 pods:
+in this exaple i will run deployment of a simple Nginx web server with 3 replicas. The deployment will ensure that there are always 3 instances of the Nginx server running, and if any of them fail, Kubernetes will automatically create a new one to replace it, and service will be exposed on port 80.
 
+the role of the service is to provide a stable endpoint for accessing the Nginx pods, and it will load balance the traffic between the available replicas.
+
+**Deployment**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -38,12 +41,28 @@ spec:
         - containerPort: 80
 ```
 
+**Service**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
 
-**Create the deployment:**
-- for running this deployment i will use the `kubectl apply` command:
+
+**Create the deployment & service:**
+- for running this deployment and service i will use the `kubectl apply` command:
 
 ```bash
 kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
 ```
 
 - then you can check the status of the deployment using the `kubectl get` command:
@@ -54,7 +73,15 @@ kubectl get deployments
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   3/3     3            3           ..s
 ```
+and for the service:
 
+```bash
+kubectl get services
+# output:
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+nginx-service   ClusterIP   xx.xx.xx.xx      <none>        80/TCP    ..s
+```
+you can also use `-o wide` to get more details about the pods and services.
 
 **Update the deployment:**
 - to update the deployment, you can modify the `deployment.yaml` file and then apply the changes again using the `kubectl apply` command:
@@ -68,8 +95,8 @@ kubectl apply -f k8s/deployment.yaml
 - to delete the deployment, you can use the `kubectl delete` command:
 ```bash
 kubectl delete -f k8s/deployment.yaml
+kubectl delete -f k8s/service.yaml
 ```
-
 
 ## File structure:
 
