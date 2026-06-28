@@ -1,4 +1,4 @@
-# Kubernetes Object Management
+# Lab 01 : Kubernetes Object Management (Imperative Commands)
 
 there is 03 methods to manage Kubernetes objects:
 1. Imperative Commands: Using `kubectl` commands to create, update, and delete objects directly from the command line. This method is quick and useful for simple tasks but can become cumbersome for complex configurations.
