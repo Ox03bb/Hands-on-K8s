@@ -1,4 +1,10 @@
+![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Helm](https://img.shields.io/badge/-Helm-0F1689?style=flat&logo=helm&logoColor=white)
+![Containerd](https://img.shields.io/badge/-containerd-575757?style=flat&logo=containerd&logoColor=white)
+
 # Hands-on-K8s
+
 
 ## Overview
 
