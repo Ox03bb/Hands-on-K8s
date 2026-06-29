@@ -1,3 +1,6 @@
+
+<img src="./assets/service/service.drawio.svg" alt="LoadBalancer Service" width="50"/>
+
 # Kubernetes Service
 
 A **Service** is a Kubernetes object that provides a **stable network endpoint** for a group of Pods. Since Pods are ephemeral—they can be created, terminated, or rescheduled at any time—their IP addresses are not reliable for communication. A Service solves this problem by assigning a permanent virtual IP address and DNS name that clients can use regardless of the underlying Pods.
@@ -376,25 +379,11 @@ spec:
       targetPort: 8080
 ```
 
-Architecture:
+**Architecture**:
 
-```
-Internet
-     │
-Cloud Load Balancer
-     │
- ┌───┴────┐
- │        │
-Node1   Node2
- │        │
- └───┬────┘
-     │
-Service
-     │
- ├── Pod A
- ├── Pod B
- └── Pod C
-```
+<div style="text-align:center;">
+  <img src="./assets/service/service01.drawio.svg" alt="LoadBalancer Service" width="400"/>
+</div>
 
 Characteristics:
 
@@ -448,14 +437,14 @@ Every Service except `ExternalName` performs load balancing.
 Example:
 
 ```
-Client
-   │
-   ▼
-Service
-   │
- ┌─┼──────────────┐
- ▼ ▼              ▼
-Pod1 Pod2       Pod3
+    Client
+       │
+       ▼
+    Service
+       │
+ ┌─────┼───────┐
+ ▼     ▼       ▼
+Pod1   Pod2   Pod3
 ```
 
 The Service automatically chooses one healthy Pod for each request.
