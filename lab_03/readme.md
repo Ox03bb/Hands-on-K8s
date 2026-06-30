@@ -9,7 +9,7 @@ in this demo we will deploy a MongoDB database, with mongo express as a web-base
 
 
 <div align="center">
-    <img src="./assets/archi_lab3.drawio.svg" alt="Architecture Diagram" width="600">
+    <img src="./assets/architecture.svg" alt="Architecture Diagram" width="600">
 </div>
 
 this deployment consist:
