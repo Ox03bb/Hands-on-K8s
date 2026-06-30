@@ -14,3 +14,9 @@ The repository covers the fundamental building blocks of Kubernetes, object mana
 
 Whether you are preparing for Kubernetes certifications, learning DevOps, or simply exploring container orchestration, this repository aims to provide a structured and practical learning path.
 
+
+
+## Resources
+
+- [Kubernetes Official Documentation](https://kubernetes.io/docs/)
+- [Youtube Channel: TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana)
