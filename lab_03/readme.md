@@ -2,6 +2,9 @@
 
 in this demo we will deploy a MongoDB database, with mongo express as a web-based interface to manage the database.
 
+> [!NOTE]
+> its not recommanded to use the `Deployment` with the databases and the services that need to be persistent, its better to use `StatefulSet` we do this demo just to show you how to use the deployment and the service together.
+
 ### Architecture:
 
 
