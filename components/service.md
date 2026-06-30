@@ -1,5 +1,5 @@
 
-<img src="./assets/service/service.drawio.svg" alt="LoadBalancer Service" width="50"/>
+<img src="./assets/service/service.drawio.svg" alt="LoadBalancer Service" width="60"/>
 
 # Kubernetes Service
 

@@ -1,9 +1,8 @@
 # Lab 01 : Kubernetes Object Management (Imperative Commands)
 
-there is 03 methods to manage Kubernetes objects:
+there is 02 methods to manage Kubernetes objects:
 1. Imperative Commands: Using `kubectl` commands to create, update, and delete objects directly from the command line. This method is quick and useful for simple tasks but can become cumbersome for complex configurations.
 2. Declarative Configuration Files: Defining Kubernetes objects in YAML or JSON files and applying them using `kubectl apply`. This method allows for version control and easier management of complex configurations.
-3. Kubernetes API: Interacting directly with the Kubernetes API using client libraries or custom scripts. This method provides the most flexibility and is suitable for advanced use cases, such as automation and integration with other systems
 
 > in this lab, we will focus on the first method, imperative commands...
 

@@ -63,6 +63,10 @@ spec:
 ```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
+
+# OR
+
+kubectl apply -f k8s/
 ```
 
 - then you can check the status of the deployment using the `kubectl get` command:
@@ -96,6 +100,10 @@ kubectl apply -f k8s/deployment.yaml
 ```bash
 kubectl delete -f k8s/deployment.yaml
 kubectl delete -f k8s/service.yaml
+
+# OR
+
+kubectl delete -f k8s/
 ```
 
 ## File structure:
