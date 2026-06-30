@@ -1,112 +1,32 @@
-# Lab 02 : Kubernetes Object Management (Declarative Configuration)
+# Lab 03: Demo Deployment
 
-in this lab i will focus on the second method, declarative configuration using YAML files. This approach allows you to define the desired state of your Kubernetes resources in a file, which can then be applied to the cluster using `kubectl apply`. This method is preferred for managing complex applications and maintaining version control of your configurations.
+in this demo we will deploy a MongoDB database, with mongo express as a web-based interface to manage the database.
 
-i will try it with a simple architecture, and i will add more complex configurations as i progress through the labs.
+### Architecture:
 
-## Architecture:
 
 <div align="center">
-    <img src="./assets/architecture_01.drawio.svg" alt="Architecture Diagram" width="600">
+    <img src="./assets/archi.svg" alt="Architecture Diagram" width="600">
 </div>
 
+this deployment consist:
+- 2 Deployments:
+  - MongoDB Deployment (1 pod)
+  - Mongo Express Deployment (1 pod)
+- 2 Services:
+  - MongoDB Service (ClusterIP)
+  - Mongo Express Service (NodePort)
+- 1 ConfigMap for Mongo Express configuration.
+- 1 Secret for MongoDB credentials.
 
-## Example:
-in this exaple i will run deployment of a simple Nginx web server with 3 replicas. The deployment will ensure that there are always 3 instances of the Nginx server running, and if any of them fail, Kubernetes will automatically create a new one to replace it, and service will be exposed on port 80.
-
-the role of the service is to provide a stable endpoint for accessing the Nginx pods, and it will load balance the traffic between the available replicas.
-
-**Deployment**
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.30
-        ports:
-        - containerPort: 80
-```
-
-**Service**
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-service
-spec:
-  selector:
-    app: nginx
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-```
+and you will find all the details of etch component in the `components` folder, and all the configuration files for this demo in the `k8s` folder.
 
 
-**Create the deployment & service:**
-- for running this deployment and service i will use the `kubectl apply` command:
+### Important Note:
+The network structure may look confusing at first, but there is one important concept to understand: a Kubernetes **Service** is **not** a separate application or process running inside the cluster.
 
-```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-```
+Instead, you can think of a Service as a **virtual IP address (ClusterIP)** combined with a set of routing rules. These rules determine which Pods should receive incoming traffic based on the Service's `selector`.
 
-- then you can check the status of the deployment using the `kubectl get` command:
+When you create a Service, Kubernetes assigns it a virtual IP address and configures the cluster's networking accordingly. The **`kube-proxy`** component running on each node programs the necessary networking rules (such as `iptables` or `IPVS`) so that any traffic sent to the Service's virtual IP is automatically forwarded to one of the Pods whose labels match the Service's `selector`.
 
-```bash
-kubectl get deployments
-# output:
-NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-nginx-deployment   3/3     3            3           ..s
-```
-and for the service:
-
-```bash
-kubectl get services
-# output:
-NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-nginx-service   ClusterIP   xx.xx.xx.xx      <none>        80/TCP    ..s
-```
-you can also use `-o wide` to get more details about the pods and services.
-
-**Update the deployment:**
-- to update the deployment, you can modify the `deployment.yaml` file and then apply the changes again using the `kubectl apply` command:
-
-```bash
-kubectl apply -f k8s/deployment.yaml
-```
-
-
-**Destroy the deployment:**
-- to delete the deployment, you can use the `kubectl delete` command:
-```bash
-kubectl delete -f k8s/deployment.yaml
-kubectl delete -f k8s/service.yaml
-```
-
-## File structure:
-
-you will find in this folder :
-
-```
-.
-├── assets
-│   └── architecture_01.drawio.svg
-├── k8s
-│   └── deployment.yaml
-└── doc.md
-```
+In other words, a Service is primarily a networking abstraction. The actual packet forwarding is performed by `kube-proxy`, which transparently routes requests from the Service's virtual IP to the appropriate backend Pods.

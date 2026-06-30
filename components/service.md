@@ -176,8 +176,8 @@ Defines how traffic is forwarded.
 ```yaml
 ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8080
+    port: 80 # the port exposed by the Service
+    targetPort: 8080 # the port on the container that receives the traffic
 ```
 
 **port**
