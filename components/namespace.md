@@ -30,6 +30,43 @@ Cluster
 
 Namespaces provide **organizational isolation**, not virtualization. All namespaces still share the same Kubernetes cluster.
 
+## Cross-Namespace Communication
+Kubernetes resources fall into two categories:
+1. **Namespaced Resources**: These resources exist within a specific namespace. Examples include Pods, Deployments, ConfigMaps, and Secrets. They are isolated from resources in other namespaces.
+2. **Cluster-scoped resources**: These resources exist at the cluster level and are not tied to any specific namespace. Examples include Nodes, PersistentVolumes, and ClusterRoles. They are accessible across all namespaces.
+
+this a list of all resource with their classification:
+
+| Resource              |      Can be Used Across Namespaces?      |
+| --------------------- | :--------------------------------------: |
+| Pod                   |       ✅ Yes (network communication)      |
+| Service               |              ✅ Yes (via DNS)             |
+| Deployment            |                   ❌ No                   |
+| ReplicaSet            |                   ❌ No                   |
+| StatefulSet           |                   ❌ No                   |
+| DaemonSet             |                   ❌ No                   |
+| Job                   |                   ❌ No                   |
+| CronJob               |                   ❌ No                   |
+| ConfigMap             |                   ❌ No                   |
+| Secret                |                   ❌ No                   |
+| PersistentVolume      |         ✅ Yes (cluster resource)         |
+| PersistentVolumeClaim |                   ❌ No                   |
+| ServiceAccount        |                   ❌ No                   |
+| Role                  |                   ❌ No                   |
+| RoleBinding           |                   ❌ No                   |
+| ClusterRole           |                   ✅ Yes                  |
+| ClusterRoleBinding    |                   ✅ Yes                  |
+| StorageClass          |                   ✅ Yes                  |
+| Node                  |                   ✅ Yes                  |
+| Namespace             |                   ✅ Yes                  |
+| NetworkPolicy         | ❌ No (applies only within its namespace) |
+| ResourceQuota         |                   ❌ No                   |
+| LimitRange            |                   ❌ No                   |
+| Ingress               |       ❌ No (belongs to a namespace)      |
+| CRD                   |                   ✅ Yes                  |
+
+
+
 
 ## Why Do We Need Namespaces?
 
