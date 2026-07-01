@@ -17,6 +17,8 @@ Whether you are preparing for Kubernetes certifications, learning DevOps, or sim
 
 ## Tools recommended:
 - [Minikube](https://minikube.sigs.k8s.io/docs/) - A local Kubernetes cluster for testing and development, this tool allows you to run Kubernetes on your local machine without the need for a cloud provider.
+- kubens - a cli tool to switch between Kubernetes namespaces easily.
+- kubectx - a cli tool to switch between Kubernetes contexts easily.
 - [k9s](https://k9scli.io/) - A terminal-based UI to interact with your Kubernetes clusters, making it easier to manage resources and view logs.
 - [zellij](https://zellij.dev/) - A terminal workspace with a focus on productivity and collaboration, useful for managing multiple terminal sessions while working with Kubernetes.
 
