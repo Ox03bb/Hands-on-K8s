@@ -15,10 +15,35 @@ The repository covers the fundamental building blocks of Kubernetes, object mana
 Whether you are preparing for Kubernetes certifications, learning DevOps, or simply exploring container orchestration, this repository aims to provide a structured and practical learning path.
 
 
+## Structure:
+```bash
+.
+├── consepts    # Contains conceptual explanations of Kubernetes components and features.
+├── components  # Contains the main Kubernetes components and their explanations.
+│   └── assets
+└── labs{N}     # Contains hands-on labs and real-world scenarios for practicing Kubernetes concepts.
+```
+
+## Content:
+### Components:
+- [Pods](./components/pod.md)
+- [Deployments](./components/deployment.md)
+- [Services](./components/service.md)
+- [ConfigMaps](./components/configmap.md)
+- [Secrets](./components/secret.md)
+- [Persistent Volumes](./components/persistentVolume.md)
+- [Namespaces](./components/namespace.md)
+
+
+### Labs:
+- [**Lab_01**](./lab_01): Kubernetes imperative commands and basic object management.
+- [**Lab_02**](./lab_02): Kubernetes declarative commands and object management using YAML manifests.
+- [**Lab_03**](./lab_03): simple demo project deployment.
+
 ## Tools recommended:
 - [Minikube](https://minikube.sigs.k8s.io/docs/) - A local Kubernetes cluster for testing and development, this tool allows you to run Kubernetes on your local machine without the need for a cloud provider.
-- kubens - a cli tool to switch between Kubernetes namespaces easily.
-- kubectx - a cli tool to switch between Kubernetes contexts easily.
+- **kubens** - a cli tool to switch between Kubernetes namespaces easily.
+- **kubectx** - a cli tool to switch between Kubernetes contexts easily.
 - [k9s](https://k9scli.io/) - A terminal-based UI to interact with your Kubernetes clusters, making it easier to manage resources and view logs.
 - [zellij](https://zellij.dev/) - A terminal workspace with a focus on productivity and collaboration, useful for managing multiple terminal sessions while working with Kubernetes.
 
