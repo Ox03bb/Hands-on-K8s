@@ -15,6 +15,11 @@ The repository covers the fundamental building blocks of Kubernetes, object mana
 Whether you are preparing for Kubernetes certifications, learning DevOps, or simply exploring container orchestration, this repository aims to provide a structured and practical learning path.
 
 
+## Tools recommended:
+- [Minikube](https://minikube.sigs.k8s.io/docs/) - A local Kubernetes cluster for testing and development, this tool allows you to run Kubernetes on your local machine without the need for a cloud provider.
+- [k9s](https://k9scli.io/) - A terminal-based UI to interact with your Kubernetes clusters, making it easier to manage resources and view logs.
+- [zellij](https://zellij.dev/) - A terminal workspace with a focus on productivity and collaboration, useful for managing multiple terminal sessions while working with Kubernetes.
+
 
 ## Resources
 
