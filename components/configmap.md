@@ -1,4 +1,4 @@
-<img src="./assets/configmap/icons.drawio.svg" alt="LoadBalancer Service" width="60"/>
+<img src="./assets/configmap/icons.drawio.svg" alt="configmap icon" width="60"/>
 
 # Kubernetes ConfigMap
 

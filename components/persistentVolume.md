@@ -1,4 +1,4 @@
-<img src="./assets/persistentVolume/pv.drawio.svg" alt="LoadBalancer Service" width="60"/>
+<img src="./assets/persistentVolume/pv.drawio.svg" alt="persistentVolumeicon" width="60"/>
 
 # Kubernetes Persistent Volumes (PV)
 

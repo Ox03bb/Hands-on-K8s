@@ -1,4 +1,4 @@
-<img src="./assets/secret/icons.drawio.svg" alt="LoadBalancer Service" width="60"/>
+<img src="./assets/secret/icons.drawio.svg" alt="secret icon" width="60"/>
 
 # Kubernetes Secrets
 
